@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Details</title>
+    <link rel="stylesheet" href="../CSS/movie_details.css">
+    <!-- Font Awesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Icons Link -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../Images/logo_small.png" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Video Container -->
+
+    <div class="video_container">
+        <div class="video">
+            <div id="player"></div>
+            <div class="iframe_overlay"></div>
+            <div class="iframe_bottom_overlay"></div>
+            <div class="buttons">
+                <button class="play"><i class="playBtn fa-solid fa-play"></i> Play</button>
+                <div class="volume_buttons">
+                    <span class="unmute material-icons">
+                        volume_up
+                    </span>
+                    <span class="mute material-icons">
+                        volume_off
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Container -->
+
+    <!-- Watch Now Container -->
+
+    <div class="watch_now_section">
+        <div class="watch_now">
+            <img src="../Images/logo_small.png" alt="">
+            <div class="netflix_details">
+                <span>Watch all you want.</span>
+                <button class="watch">WATCH NOW</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Watch Now Container -->
+
+    <!-- Movie Details Section -->
+
+    <section class="movie_details_section">
+
+    </section>
+
+    <!-- Movie Details Section -->
+
+    <!-- Cast Details -->
+
+    <section class="cast_section">
+        <div class="cast_container container">
+            <h2 class="cast_heading">Cast</h2>
+            <div class="cast">
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Cast Details -->
+
+    <!-- You may also like Section -->
+    <section class="similar_movies_section">
+        <div class="similar_movies_container container">
+            <h2 class="heading">You would also like</h2>
+            <div class="similar_movies">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="container">
+        <p>Netflix India</p>
+    </footer>
+    <!-- Footer Section -->
+
+    <!-- Script -->
+    <script type="module" src="../JavaScript/movie_details.js" defer></script>
+    <script src="../JavaScript/youtubeIframeApi.js" defer></script>
+</body>
+
+</html>
