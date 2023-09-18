@@ -472,6 +472,23 @@ footer p {
 
 
 /* Media Queries */
+@media screen and (max-width : 768px) {
+    /* Cast Details Section */
+
+    .cast_section  {
+        pointer-events: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    /* Cast Details Section */
+}
+
 @media screen and (max-width : 670px) {
     /* Video Container */
     .video_container {
@@ -535,8 +552,12 @@ footer p {
         font-size: .9rem;
     }
 
-    .buttons .volume_buttons span, .buttons button i {
+    .buttons button i {
         font-size: 1rem;
+    }
+
+    .buttons .volume_buttons span {
+        font-size: 1.7rem;
     }
 
     .buttons .volume_buttons span {
