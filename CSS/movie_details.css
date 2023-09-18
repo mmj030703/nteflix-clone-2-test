@@ -476,6 +476,7 @@ footer p {
     /* Cast Details Section */
 
     .cast_section  {
+        /* Removing Blue Highlight */
         pointer-events: none;
         -webkit-tap-highlight-color: transparent;
         -webkit-touch-callout: none;
@@ -548,6 +549,10 @@ footer p {
     }
 
     /* Video Container */
+    .iframe_overlay {
+        display: none;
+    }
+    
     .buttons button {
         font-size: .9rem;
     }
