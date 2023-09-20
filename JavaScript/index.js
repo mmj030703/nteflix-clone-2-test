@@ -135,7 +135,7 @@ const buildMoviesCategorySection = (movieObj, categoryName) => {
                         window.open(`./HTML/movie_details.html?movieId=${movieId}&vId=${trailerId}`, '_blank');
                      })
                      .catch(error => console.error(error));
-                })
+                });
                 
             });
 
@@ -148,12 +148,10 @@ const buildMoviesCategorySection = (movieObj, categoryName) => {
                 if(likeBtn.classList.contains('like')) {
                     likeBtn.classList.remove('like');
                     likeBtn.classList.add('likeBtn_liked');
-                    alert('Liked');
                 }
                 else {
                     likeBtn.classList.add('like');
                     likeBtn.classList.remove('likeBtn_liked');
-                    alert('Unliked');
                 }
             });
 
@@ -166,12 +164,10 @@ const buildMoviesCategorySection = (movieObj, categoryName) => {
                 if(wishlistBtn.classList.contains('wishlist')) {
                     wishlistBtn.classList.remove('wishlist');
                     wishlistBtn.classList.add('wishlist_clicked');
-                    alert('Added to Wishlist');
                 }
                 else {
                     wishlistBtn.classList.add('wishlist');
                     wishlistBtn.classList.remove('wishlist_clicked');
-                    alert('Removed from Wishlist');
                 }
             });
         };

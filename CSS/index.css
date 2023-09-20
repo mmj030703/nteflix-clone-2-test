@@ -235,21 +235,21 @@ header {
     font-size: 1.3rem;
     color: rgb(229, 9, 20);
     cursor: pointer;
-    height: 88%;
+    height: 55%;
     width: 80px;
     padding-top: 80px;
     z-index: 2;
 }
 
 .movie_categories_section .movie_container .prev_button {
-    top: calc(12%);
+    top: calc(9%);
     left: -1.4%;
     display: none;
 }
 
 .movie_categories_section .movie_container .next_button {
     right: -1.4%;
-    top: calc(12%);
+    top: calc(9%);
     text-align: right;
 }
 
@@ -310,25 +310,9 @@ header {
     transition: all .5s cubic-bezier(0.185, 0.135, 0.25, 1);
 }
 
-.movie_item .extra .wishlist, 
-.movie_item .extra .like, 
-.movie_item .extra .more_details {
-    pointer-events: none;
-}
-
-.movie_item .extra {
-    pointer-events: none;
-}
-
 .movie_item:hover {
     z-index: 10;
     scale: 1.1;
-}
-
-.movie_item:hover .extra .wishlist, 
-.movie_item:hover .extra .like, 
-.movie_item:hover .extra .more_details {
-    pointer-events: all;
 } 
 
 .movie_item:hover .movie_image {
@@ -610,6 +594,26 @@ header {
     /* Movie Categories Section */
 }
 
+/* Max-Width : 768px */
+@media screen and (max-width:768px) {
+    /* Body */
+    body * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    /* Body */
+    /* Movie Categories Section */
+    .movie_categories_section .category_heading:hover .explore {
+        visibility: hidden;
+    }
+
+    .movie_item .extra .buttons .left_btns .like:hover::after,
+    .movie_item .extra .buttons .left_btns .wishlist:hover::after,
+    .movie_item .extra .buttons .right_btns .more_details:hover::after {
+        visibility: hidden;
+    }
+    /* Movie Categories Section */
+}
+
 /* Max Height : 600px */
 @media screen and (max-width: 600px) {
     /* Header Section */
@@ -646,6 +650,8 @@ header {
     .movie_categories_section .movie_container .prev_button,
     .movie_categories_section .movie_container .next_button {
         top: 3%;
+        margin-top: 1rem;
+        width: 50px;
     }
 
     .movie_container .movie_name {
@@ -683,13 +689,17 @@ header {
 
      /* Banner Section */
     .banner .banner_container .movie_description {
-        /* font-size: .92rem; */
         width: 95%;
     }
     /* Banner Section */
 
     /* Movie Categories Section */
-
+    .movie_categories_section .movie_container .prev_button,
+    .movie_categories_section .movie_container .next_button {
+        margin-top: 1rem;
+        width: 35px;
+    }
+    
     .movie_container .movie_name {
         font-size: .8rem;
     }
