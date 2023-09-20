@@ -222,7 +222,7 @@ const updateBannerSection = (movie) => {
                 <p class="movie_release_year">${movie.release_date}</p>
                 <p class="movie_category">${movieCategory}</p>
             </div>
-            <p class="movie_description">${movie.overview}</p>
+            <p class="movie_description">${movie.overview.length <= 200 ? movie.overview : movie.overview.slice(0, 200) + '...'}</p>
         `;
     
         bannerSection.appendChild(bannerContainer);
@@ -286,6 +286,14 @@ const bootApp = () => {
             header.classList.remove('black_bg');
         }
     });
+
+    // Adding Click Event to the Mobile and tablet Navbar
+    const menu = document.querySelector('.tablet_mobile_navbar_list');
+    const menuHeading = document.querySelector('.small_devices_navbar .heading');
+    
+    menuHeading.addEventListener('click', (event) => {
+        menu.classList.toggle('show');
+    })
 }
 
 window.addEventListener('load', (event) => {

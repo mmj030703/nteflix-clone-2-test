@@ -488,6 +488,14 @@ footer p {
     }
 
     /* Cast Details Section */
+
+    /* Similar Movies Section */
+
+    .similar_movies .movie .movie_details .buttons i.more_details:hover::after {
+        visibility: hidden;
+    }
+
+    /* Similar Movies Section */
 }
 
 @media screen and (max-width : 670px) {
@@ -552,7 +560,7 @@ footer p {
     .iframe_overlay {
         display: none;
     }
-    
+
     .buttons button {
         font-size: .9rem;
     }
