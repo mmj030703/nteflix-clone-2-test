@@ -244,11 +244,13 @@ header {
 .movie_categories_section .movie_container .prev_button {
     top: calc(12%);
     left: -22px;
+    left: -1.4%;
     display: none;
 }
 
 .movie_categories_section .movie_container .next_button {
     right: -22px;
+    right: -1.4%;
     top: calc(12%);
     text-align: right;
 }
@@ -608,7 +610,7 @@ header {
 
     /* Movie Categories Section */
     .movie_categories_section {
-        margin: -7rem 0rem;
+        margin: -10rem 0rem;
     }
     /* Movie Categories Section */
 }
