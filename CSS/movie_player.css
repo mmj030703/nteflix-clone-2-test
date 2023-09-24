@@ -241,7 +241,7 @@ body {
 
     .video_container .touch_devices_video_controls .timeline_container {
         position: absolute;
-        bottom: 10px;
+        bottom: 35%;
         padding: 0rem 1rem;
         width: 100%;
         display: flex;
