@@ -355,3 +355,5 @@ touchRewind.addEventListener('click', rewindVideoPlayer);
 // Adding Click Event to fast forward button
 touchFastForward.addEventListener('click', fastForwardVideoPlayer);
 /* ------------------------------------------------- || Touch Devices || ------------------------------------------------------*/
+
+console.log(touchPlay.parentElement);
