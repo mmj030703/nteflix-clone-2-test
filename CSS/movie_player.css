@@ -256,6 +256,10 @@ body {
         cursor: pointer;
     }
 
+    .timeline_container .timeline::after {
+        display: block;
+    }
+
     .video_container .touch_devices_video_controls i {
         position: absolute;
         font-size: 2.2rem;
