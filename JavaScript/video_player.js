@@ -336,14 +336,24 @@ touchRewind.addEventListener('click', rewindVideoPlayer);
 touchFastForward.addEventListener('click', fastForwardVideoPlayer);
 
 window.addEventListener('orientationchange', (e) => {
+  
     const orientationObj = screen.orientation;
-
     if(orientationObj.angle === 90 || orientationObj.angle === -90) {
-        const fullScreenResponse = videoPlayer.requestFullscreen();
-
-        fullScreenResponse
-         .then()
-         .catch(error => console.error());
+        pictureInPicture.style.display = "none";
+        touchDevicesControlsContainer.style.display = "none";
+        videoControlsContainer.style.display = "block";
     }
-})
+    else {
+        pictureInPicture.style.display = "inline-block";
+        touchDevicesControlsContainer.style.display = "flex";
+        touchDevicesControlsContainer.classList.remove('paused');
+        videoControlsContainer.style.display = "none";
+    }
+    
+        videoPlayer.pause();
+    
+    if(!orientationObj.angle === 90 && !orientationObj.angle === -90) {
+        videoControlsContainer.style.display = "none";
+    }
+});
 /* ------------------------------------------------- || Touch Devices || ------------------------------------------------------*/

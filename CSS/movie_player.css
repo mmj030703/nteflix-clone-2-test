@@ -309,7 +309,7 @@ body {
     }
 }
 
-@media screen and (max-width:500px),(orientatin:landscape) {
+@media screen and (max-width:500px) {
     .video_container .touch_devices_video_controls i {
         font-size: 1.5rem;
     }
