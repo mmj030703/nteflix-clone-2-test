@@ -26,11 +26,12 @@ body {
 .video_container {
     position: relative;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .video_container video {
     width: 100%;
-    height: 99vh;
+    height: 99svh;
 }
 
 .video_container .video_controls_container {
@@ -64,6 +65,10 @@ body {
     background-color: #999;
     height: var(--timeline-height);
     position: relative;
+}
+
+.timeline_container:hover .timeline {
+    height: calc(1.5 * var(--timeline-height));
 }
 
 .timeline_container .timeline::before {
@@ -227,11 +232,9 @@ body {
         position: absolute;
         top: 0;
         display: none;
-        display: block;
         width: 100%;
         height: 100%;
         background-color: rgba(0, 0, 0, .15);
-        -webkit-tap-highlight-color: transparent;
         user-select: none;
     }
 
@@ -241,12 +244,12 @@ body {
 
     .video_container .touch_devices_video_controls .timeline_container {
         position: absolute;
-        bottom: 35%;
-        padding: 0rem 1rem;
+        bottom: 20%;
         width: 100%;
         display: flex;
         flex-direction: column;
         row-gap: .3rem;
+        padding: 0 1rem;
     }
 
     .video_container .touch_devices_video_controls .timeline_container .timeline {
@@ -306,7 +309,7 @@ body {
     }
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:500px),(orientatin:landscape) {
     .video_container .touch_devices_video_controls i {
         font-size: 1.5rem;
     }
@@ -316,7 +319,8 @@ body {
         font-size: 2.4rem;
     }
 
-    .touch_devices_video_controls .touch_devices_control_buttons .play_and_pause .play {
+    .touch_devices_video_controls .touch_devices_control_buttons .play_and_pause .play,
+    .touch_devices_video_controls .touch_devices_control_buttons .play_and_pause .pause {
         left: 44.2%;
     }
 
@@ -339,9 +343,9 @@ body {
         font-size: 1.8rem;
     }
 
-    .touch_devices_video_controls .touch_devices_control_buttons .play_and_pause .play {
+    .touch_devices_video_controls .touch_devices_control_buttons .play_and_pause .play,
+    .touch_devices_video_controls .touch_devices_control_buttons .play_and_pause .pause {
         left: 42%;
-        /* top: 44%; */
     }
 
     .touch_devices_video_controls .touch_devices_control_buttons .rewind {

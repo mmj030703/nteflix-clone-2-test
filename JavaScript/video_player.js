@@ -27,13 +27,12 @@ setInterval(() => {
 /* ------------------------------------------------- || Desktop Devices / Big Devices || ------------------------------------------------------*/
 // Handling Timeline when dragged from one point to another
 let dragging = false;
-const prevX = null;
 
 timeline.addEventListener('mousemove', (e) => {   
     if(!dragging) return;
 
-    const currX = e.clientX - 64;
-    const draggedDistance = currX - prevX;
+    const currX = e.clientX;
+    const draggedDistance = currX  - 64;
     const draggedDistancePercent =  ((draggedDistance) * 100) / (timeline.clientWidth);
     videoPlayer.currentTime = (draggedDistancePercent * videoPlayer.duration) / 100;
 });
@@ -48,7 +47,6 @@ timeline.addEventListener('mouseup', (e) => {
 // ----------------------------------------------------------------------------------------------------------------
 timeline.addEventListener('mousedown', (e) => {
     dragging = true;
-    prevX = e.clientX - 64;
 });
 // ----------------------------------------------------------------------------------------------------------------
 
@@ -220,73 +218,55 @@ setInterval(() => {
 let timelineDragging = false;
 let prevXCoordinate = null;
 
-touchTimeline.addEventListener('mousemove', (e) => {   
+touchTimeline.addEventListener('touchmove', (e) => {
     if(!timelineDragging) return;
-
-    const currX = e.clientX - timelinePadding;
-    const draggedDistance = currX - prevXCoordinate;
-    const draggedDistancePercent =  ((draggedDistance) * 100) / (touchTimeline.clientWidth);
+    const currX = e.touches[0].clientX - timelinePadding;
+    const draggedDistancePercent =  ((currX) * 100) / (touchTimeline.clientWidth);
     videoPlayer.currentTime = (draggedDistancePercent * videoPlayer.duration) / 100;
+
+    autoHideControlsContainer(3500);
 });
 
-touchTimeline.addEventListener('mouseleave', (e) => {   
-    timelineDragging = false;
-});
-
-touchTimeline.addEventListener('mouseup', (e) => {   
+touchTimeline.addEventListener('touchend', (e) => {
     timelineDragging = false;
 });
 // ----------------------------------------------------------------------------------------------------------------
-touchTimeline.addEventListener('mousedown', (e) => {
+touchTimeline.addEventListener('touchstart', (e) => {
     timelineDragging = true;
-    prevXCoordinate = e.clientX - timelinePadding;
+    prevXCoordinate = e.touches[0].clientX - timelinePadding;
 });
 // ----------------------------------------------------------------------------------------------------------------
 
 // Handling Timeline when clicked at any point
-touchTimeline.addEventListener('mousedown', (e) => {
-    const clickedCoordinateXValue = e.clientX - timelinePadding;
+touchTimeline.addEventListener('touchstart', (e) => {
+    const clickedCoordinateXValue = e.touches[0].clientX - timelinePadding;
     const clickedCoordinateXValueInPercent = ((clickedCoordinateXValue) * 100) / (touchTimeline.clientWidth);
     videoPlayer.currentTime = (clickedCoordinateXValueInPercent * videoPlayer.duration) / 100;
 });
 
-// On mouse hovering displaying video controls container
-// touchDevicesControlsContainer.addEventListener('mouseover', (e) => {
-//     videoPlayer.style.zIndex = "-1";
-//     touchDevicesControlsContainer.style.display = "flex";
-// });
-
-// ----------------------------------------------------------------------------------------------------------------
-// Hiding the Controls Container when not clicked for more than 2.5 sec while ramaining on the video container
-videoPlayer.addEventListener('mousedown', (e) => {
-    if(window.innerWidth <= 768) {
-        // touchDevicesControlsContainer.classList.toggle('flex');    
-
-        // Clearing previous timeouts so that only one timeout will be active at one time
-        clearTimeout(hideTouchDevicesControlsContainerTimeout);
-
-        // hideTouchDevicesControlsContainerTimeout = setTimeout(() => {
-        //     touchDevicesControlsContainer.style.display = "none";
-        //     touchDevicesControlsContainer.classList.remove('flex');
-        // }, 2500);
-    }
-});
 // ----------------------------------------------------------------------------------------------------------------
 
-const autoHideControlsContainer = () => {
-    // Clearing previous timeouts so that only one timeout will be active at one time
+// ----------------------------------------------------------------------------------------------------------------
+
+const autoHideControlsContainer = (timeoutTime) => {
+    // // Clearing previous timeouts so that only one timeout will be active at one time
     clearTimeout(hideTouchDevicesControlsContainerTimeout);
 
     hideTouchDevicesControlsContainerTimeout = setTimeout(() => {
         touchDevicesControlsContainer.classList.toggle('flex');
-    }, 2500);
+        console.log('fast');
+    }, timeoutTime);
 };
 
 // Arrow Function to fast forward the video
 const fastForwardVideoPlayer = (e) => {
     videoPlayer.currentTime += 5;
+    touchDevicesControlsContainer.classList.toggle('flex');
     
-    autoHideControlsContainer();
+    // Clearing previous timeouts so that only one timeout will be active at one time
+    clearTimeout(hideTouchDevicesControlsContainerTimeout);
+    
+    autoHideControlsContainer(2500);
 
     // fastForwardPopup.style.visibility = "visible";
     // fastForwardPopup.classList.add('fade_up');
@@ -301,7 +281,7 @@ const fastForwardVideoPlayer = (e) => {
 const rewindVideoPlayer = (e) => {
     videoPlayer.currentTime -= 5;
     
-    autoHideControlsContainer();
+    autoHideControlsContainer(2500);
 
     // rewindPopup.style.visibility = "visible";
     // rewindPopup.classList.add('fade_up');
@@ -320,7 +300,7 @@ const controlVideoPlayer = (e) => {
     if(window.innerWidth <= 768 && (!element.classList.contains('play') && !element.classList.contains('pause') && !element.classList.contains('rewind') && !element.classList.contains('timeline'))) {
         touchDevicesControlsContainer.classList.toggle('flex');
 
-        autoHideControlsContainer(); 
+        autoHideControlsContainer(2500); 
     }
 };
 
@@ -329,7 +309,7 @@ const pauseVideoPlayer = (e) => {
     videoPlayer.pause();
     touchDevicesButtonsContainer.classList.remove('paused');
     
-    autoHideControlsContainer();
+    autoHideControlsContainer(2500);
 };
 
 // Arrow Function to play the video
@@ -337,7 +317,7 @@ const playVideoPlayer = (e) => {
     videoPlayer.play();
     touchDevicesButtonsContainer.classList.add('paused');
 
-    autoHideControlsContainer();
+    autoHideControlsContainer(2500);
 };
 
 // Adding Click Event to play button
@@ -354,6 +334,16 @@ touchRewind.addEventListener('click', rewindVideoPlayer);
 
 // Adding Click Event to fast forward button
 touchFastForward.addEventListener('click', fastForwardVideoPlayer);
-/* ------------------------------------------------- || Touch Devices || ------------------------------------------------------*/
 
-console.log(touchPlay.parentElement);
+window.addEventListener('orientationchange', (e) => {
+    const orientationObj = screen.orientation;
+
+    if(orientationObj.angle === 90 || orientationObj.angle === -90) {
+        const fullScreenResponse = videoPlayer.requestFullscreen();
+
+        fullScreenResponse
+         .then()
+         .catch(error => console.error());
+    }
+})
+/* ------------------------------------------------- || Touch Devices || ------------------------------------------------------*/
