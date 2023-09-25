@@ -52,6 +52,9 @@ const searchYoutubeTrailerId = (movieTitle) => {
 }
 
 const buildSimilarMoviesSection = (moviesObj) => {
+    const similarMoviesSection = document.querySelector('.similar_movies_section');
+    if(moviesObj.length === 0) similarMoviesSection.remove();
+
     const similarMoviesContainer = document.querySelector('.similar_movies');
     moviesObj.sort((a,b) => {
         return b.popularity - a.popularity;
