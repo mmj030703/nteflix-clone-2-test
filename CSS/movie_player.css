@@ -225,6 +225,21 @@ body {
     left: 13rem;
 }
 
+.landscape_orientation {
+    display: none;
+    background-color: #181818;
+    color: #fff;
+}
+
+.landscape_orientation h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 2.5rem;
+    padding: 0rem 1rem;
+}
+
 /* Video Container */
 
 @media screen and (max-width:768px) {

@@ -339,21 +339,12 @@ window.addEventListener('orientationchange', (e) => {
   
     const orientationObj = screen.orientation;
     if(orientationObj.angle === 90 || orientationObj.angle === -90) {
-        pictureInPicture.style.display = "none";
-        touchDevicesControlsContainer.style.display = "none";
-        videoControlsContainer.style.display = "block";
+        document.querySelector('.landscape_orientation').style.display = "block";
+        videoContainer.style.display = "none";
     }
     else {
-        pictureInPicture.style.display = "inline-block";
-        touchDevicesControlsContainer.style.display = "flex";
-        touchDevicesControlsContainer.classList.remove('paused');
-        videoControlsContainer.style.display = "none";
-    }
-    
-        videoPlayer.pause();
-    
-    if(!orientationObj.angle === 90 && !orientationObj.angle === -90) {
-        videoControlsContainer.style.display = "none";
+        document.querySelector('.landscape_orientation').style.display = "none";
+        videoContainer.style.display = "block";
     }
 });
 /* ------------------------------------------------- || Touch Devices || ------------------------------------------------------*/
